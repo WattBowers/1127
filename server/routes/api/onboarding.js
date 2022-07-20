@@ -48,9 +48,9 @@ const methodNotAllowed = (req, res, next) => {
 
 const getOnboarding = async (req, res, next) => {
   try {
-    if (!req.user) {
-      return res.sendStatus(401);
-    }
+    //if (!req.user) {
+    //  return res.sendStatus(401);
+    //}
     return res.status(200).json({ steps: STEPS });
   } catch (error) {
     next(error);

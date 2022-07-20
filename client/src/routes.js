@@ -4,6 +4,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 
 import Signup from "./Signup.js";
 import Login from "./Login.js";
+import Onboard from "./onboard/Onboard";
 import { SnackbarError, Home } from "./components";
 
 const Routes = (props) => {
@@ -13,6 +14,7 @@ const Routes = (props) => {
 
   const [errorMessage, setErrorMessage] = useState("");
   const [snackBarOpen, setSnackBarOpen] = useState(false);
+  const [justRegistered, setJustRegistered] = useState(false)
 
   const login = async (credentials) => {
     try {
@@ -29,6 +31,7 @@ const Routes = (props) => {
     try {
       const { data } = await axios.post("/auth/register", credentials);
       await localStorage.setItem("messenger-token", data.token);
+      setJustRegistered(true)
       setUser(data);
     } catch (error) {
       console.error(error);
@@ -101,15 +104,21 @@ const Routes = (props) => {
           render={() => <Signup user={user} register={register} />}
         />
         <Route
+          path="/onboard"
+          render={() => <Onboard user={user} register={register} />}
+        />
+        <Route
           exact
           path="/"
           render={(props) =>
             user?.id ? (
+              
               <Home user={user} logout={logout} />
             ) : (
               <Signup user={user} register={register} />
             )
           }
+        
         />
         <Route
           path="/home"

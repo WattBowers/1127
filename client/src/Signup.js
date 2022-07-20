@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link, useHistory } from "react-router-dom";
 import {
   Grid,
@@ -34,7 +34,7 @@ const Signup = ({ user, register }) => {
   useEffect(() => {
     if (user && user.id) history.push("/home");
   }, [user, history]);
-
+  
   return (
     <Grid container justifyContent="center">
       <Box>
@@ -98,7 +98,7 @@ const Signup = ({ user, register }) => {
                 </FormHelperText>
               </FormControl>
             </Grid>
-            <Button type="submit" variant="contained" size="large">
+            <Button type="submit" variant="contained" size="large" >
               Create
             </Button>
           </Grid>
