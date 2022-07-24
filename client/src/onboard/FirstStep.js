@@ -42,7 +42,7 @@ const FirstStep = ({ setStep, onboardingData, name, setName, lastName, setLastNa
                 </div>
                 <div className="box">
                   <p className="box-label">{onboardingData[0][2].label}</p>
-                  <textarea onChange={(e) => setBio(e.target.value)} onFocus={() => changeToBlue(4)} onBlur={() => changeToGrey(4)} rows="5" className="textarea" value={bio}></textarea >
+                  <textarea onChange={(e) => setBio(e.target.value)} placeholder='Enter text here . . .' onFocus={() => changeToBlue(4)} onBlur={() => changeToGrey(4)} rows="5" className="textarea" value={bio}></textarea >
                   <div id='4' className="rest-base"></div>
                 </div>
                 <p className="error-text">Please fill out all required fields before proceeding</p>
